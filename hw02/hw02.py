@@ -133,6 +133,11 @@ def digit_distance(n):
     True
     """
     "*** YOUR CODE HERE ***"
+    if n<10:
+        return 0
+    else:
+
+        return abs(n%10-(n//10)%10)+digit_distance(n//10)
 
 
 def interleaved_sum(n, odd_func, even_func):
@@ -157,8 +162,14 @@ def interleaved_sum(n, odd_func, even_func):
     True
     """
     "*** YOUR CODE HERE ***"
-
-
+    def helper(k,is_odd):
+        if k>n:
+            return 0
+        if is_odd==True:
+            return odd_func(k)+helper(k+1,False)
+        if is_odd==False:
+            return even_func(k)+helper(k+1,True)
+    return helper(1,True)
 def next_larger_coin(coin):
     """Returns the next larger coin in order.
     >>> next_larger_coin(1)
